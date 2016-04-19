@@ -13,32 +13,33 @@ int main()
 	for (liczba=1;liczba<=licznik;liczba++)
 		printf("%d ", liczba*liczba*liczba);
 	printf("\n");
-	
+
 	liczba=1;
 	while (liczba <=licznik){
 		printf("%d ", liczba*liczba);
 		liczba++;
 	}
 	printf("\n");
-	
+
 	liczba=1;
 	while (liczba <=licznik){
 		printf("%d ", liczba*liczba*liczba);
 		liczba++;
 	}
 	printf("\n");
-	
+
 	liczba=1;
 	do{
 		printf("%d ", liczba*liczba);
-		liczba++;		
+		liczba++;
 	}while (liczba<=licznik);
-	
+
 	printf("\n");
-	
+
 	liczba=1;
 	do{
 		printf("%d ", liczba*liczba*liczba);
-		liczba++;		
+		liczba++;
 	}while (liczba<=licznik);
+	return 0;
 }

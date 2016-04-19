@@ -3,16 +3,16 @@
 
 int main(){
 	char znak;
-	
+
 	printf("Wpisz jakis tekst:");
-	
-	while (znak != '\n')	{	
+
+	while (znak != '\n')	{
 		znak = getchar();
 		if (znak >= 'a' && znak <= 'z'){
 			putchar(toupper(znak));
 		}
 		else
-			putchar(znak);	
+			putchar(znak);
 	}
 	return 0;
 }

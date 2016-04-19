@@ -1,23 +1,26 @@
 #include <stdio.h>
 #include <math.h>
 
-double pierwiastek(int liczba){
-    double poprzedni;
-    double nastepny = 0;
-    for (poprzedni = liczba / 2; poprzedni < (poprzedni - (liczba / poprzedni)) ; nastepny = poprzedni / 2){
-        nastepny = (poprzedni + (liczba / poprzedni)) / 2;
-        poprzedni = nastepny;
+double pierwiastek(double liczba){
+    double x = 1, epsilon = 1e-9;
+    do {
+        x = 0.5 * (x + (liczba / x));
     }
-    return nastepny;
+    while(fabs(x - (liczba / x)) > epsilon * x);
+
+    return x;
 }
 
 int main(){
-    int a;
+    double a;
 
-    puts("Podaj liczbe do pierwiastka: \n");
-    scanf("%d", &a);
+    for (a = 3e-5; a < 1e7; a *= 10){
 
-    printf("Otrzymany wynik pierwiastka z %d wynosi %lf\n", a, pierwiastek(a));
-    printf("Oczekiwany wynik %lf\n", sqrt(a));
+        printf("Otrzymany wynik pierwiastka z %lf wynosi %lf\n", a, pierwiastek(a));
+        printf("Oczekiwany wynik %lf\n", sqrt(a));
+
+        printf("Blad wzgledny wynosi %le %%\n\n", (fabs(pierwiastek(a) - sqrt(a)) / sqrt(a) * 100));
+
+    }
     return 0;
 }
