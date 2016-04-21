@@ -5,14 +5,13 @@ int czy_pierwsza(int liczba);
 int czy_pierwsza(int liczba){
     int i;
 
-    if (liczba < 1)
+    if (liczba <= 1)
         return 0;
     for(i = 2; i * i <= liczba; i++){
         if(liczba % i==0)
             return 0;
     }
-    if (liczba == 1)
-        return 1;
+
     return 1;
 }
 
