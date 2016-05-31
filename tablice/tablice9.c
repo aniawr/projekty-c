@@ -1,20 +1,19 @@
 #include <stdio.h>
 
 int ostatniaPodzielna7(int tablica[], int rozmiar){
-    int podzielna = 0;
+    int brakPodzielnej = -99;
     int licznik;
 
     for (licznik = rozmiar - 1; licznik >= 0; licznik--){
         if (tablica[licznik] % 7 == 0){
-            podzielna = tablica[licznik];
-            break;
+            return tablica[licznik];
         }
     }
-    return podzielna;
+    return brakPodzielnej;
 }
 
 int main(){
-    int ilosc = 0, licznik = 0, liczba;
+    int ilosc = 0, licznik, liczba;
 
     do{
         printf("Podaj ile bedzie liczb, ale nie mniej niz 0:\n");
@@ -23,11 +22,11 @@ int main(){
 
     int dane[ilosc];
 
-    for (licznik; licznik < ilosc; licznik++){
+    for (licznik = 0; licznik < ilosc; licznik++){
         do {
-            printf("\nPodaj %d liczbe:\n", licznik + 1);
+            printf("\nPodaj %d liczbe dodatnia:\n", licznik + 1);
             scanf("%d", &dane[licznik]);
-        } while (dane[licznik] <= 0);
+        } while (dane[licznik] < 0);
     }
     liczba = ostatniaPodzielna7(dane, licznik);
     if (liczba)

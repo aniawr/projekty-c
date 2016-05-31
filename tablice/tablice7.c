@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #define MAX 101
 
 void odKonca(char napis[], int rozmiar){
     int licznik;
     char pom;
-
+    // int rozmiar = strlen(napis);   <= gdy nie pobieramy napisu od uzytkownika i nie znamy dlugosci
     for (licznik = 0; licznik < rozmiar / 2; licznik++){
         pom = napis[licznik];
         napis[licznik] = napis[rozmiar - licznik - 2];
@@ -24,6 +25,9 @@ int main(){
         napis[rozmiar] = znak;
         rozmiar++;
 	}
+	// Alternatywnie:
+	// gets(napis);
+
     odKonca(napis, rozmiar);
     getchar();
     getchar();
