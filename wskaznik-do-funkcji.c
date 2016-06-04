@@ -79,7 +79,7 @@ int main(){
     //  default: puts("Bledny numer!"); exit(1);
     //}
     x0 = miejsceZerowe(funkcja, 1, 5, 1e-19);
-    printf("Miejsce zerowe funkcji '2x^3 -30' w przedziale od 1 do 5 wynosi: %lf\n", x0);
+    printf("Miejsce zerowe funkcji w przedziale od 1 do 5 wynosi: %lf\n", x0);
 
     x4 = miejsceZerowe(sinCos, 0, 3, 1e-19);
     printf("Miejsce przeciecia sin(x) i cos(x) w przedziale od 0 do 3 wynosi: %lf", x4);
