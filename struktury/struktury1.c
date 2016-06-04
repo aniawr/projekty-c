@@ -48,22 +48,21 @@ void dodajStudenta(int iloscStudentow, struct student Studenci[]){
     scanf("%d", &Studenci[iloscStudentow].ocena);
 }
 
-int pobierzZPliku(const char * const nazwaPliku, FILE *plik, struct student Studenci[]){
-    int iloscStudentow = 0;
+void pobierzZPliku(const char * const nazwaPliku, FILE *plik, struct student Studenci[], int *iloscStudentow){
+    *iloscStudentow = 0;
     if ((plik = fopen(nazwaPliku, "r")) == NULL){
         fprintf(stderr, "Nie moge otworzyc pliku %s\n", nazwaPliku);
         exit(2);
     }
 
-    while (iloscStudentow < MAX_STUDENTOW && fscanf(plik, "%s %s %d", Studenci[iloscStudentow].imie, Studenci[iloscStudentow].nazwisko, &Studenci[iloscStudentow].ocena) == 3){
-        iloscStudentow++;
+    while (*iloscStudentow < MAX_STUDENTOW && fscanf(plik, "%s %s %d", Studenci[*iloscStudentow].imie, Studenci[*iloscStudentow].nazwisko, &Studenci[*iloscStudentow].ocena) == 3){
+        *iloscStudentow++;
     }
 
     if(fclose(plik) != 0){
         fprintf(stderr, "Nie moge zamknac pliku %s\n", nazwaPliku);
         exit(3);
     }
-    return iloscStudentow;
 }
 
 double sredniaArytmetycznaOcen(int iloscStudentow, struct student Studenci[]){
@@ -116,7 +115,7 @@ int main(){
             } else
                 puts("Brak wolnego miejsca na dopisanie studenta!");
         } else if (opcja == 4)
-            iloscStudentow = pobierzZPliku(nazwaPliku, plik, Studenci);
+            pobierzZPliku(nazwaPliku, plik, Studenci, &iloscStudentow);
         else if (opcja == 5)
             printf("Srednia arytmetyczna ocen studentow wynosi: %.2lf\n", sredniaArytmetycznaOcen(iloscStudentow, Studenci));
         puts("");
